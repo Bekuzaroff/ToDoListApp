@@ -1,6 +1,5 @@
 package com.example.todolistapp.presentation.viewmodels
 
-
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,7 +14,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 @HiltViewModel
 class ToDoViewModel @Inject constructor(
     val fromDomainToPresMapper: FromDomainToPresMapper,
@@ -33,7 +31,6 @@ class ToDoViewModel @Inject constructor(
 
     fun getAllToDos() = viewModelScope.launch {
         val list = getAllToDosUseCase()
-        Log.d("list", "${getAllToDosUseCase()}")
         _all_todos.emit(list.map { fromDomainToPresMapper.map(it) })
     }
 
