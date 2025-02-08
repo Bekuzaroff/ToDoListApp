@@ -73,7 +73,7 @@ class ListFragment : Fragment() {
             //TODO DATABASE OPERATIONS
             lifecycleScope.launch {
                 toDoViewModel.all_todos.collect{list ->
-                    adapter.newList(list)
+                    adapter.differ.submitList(list)
                 }
             }
         }
@@ -87,6 +87,7 @@ class ListFragment : Fragment() {
     private fun deleteBtClickAdapter(toDoItemList: ToDoItemList){
         toDoViewModel.deleteToDo(toDoItemList)
         toDoViewModel.getAllToDos()
+
     }
 
     private fun itemClickAdapter(toDoItemList: ToDoItemList){
