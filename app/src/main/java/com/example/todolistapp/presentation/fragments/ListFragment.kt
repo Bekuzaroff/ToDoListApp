@@ -73,7 +73,7 @@ class ListFragment : Fragment() {
             //TODO DATABASE OPERATIONS
             lifecycleScope.launch {
                 toDoViewModel.all_todos.collect{list ->
-                    adapter.newList(list)
+                    adapter.differ.submitList(list)
                 }
             }
         }
